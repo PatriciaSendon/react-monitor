@@ -1,10 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Icon } from 'antd';
-import FlipInx from './animations/FlipInx'
-
-
-
+import FlipInx from './animations/FlipInx';
 
 const CardStyled = styled.div`
   box-shadow: 1px 1px 5px rgba(184, 177, 184, 1);
@@ -35,6 +32,7 @@ const QtdEmail = styled.div`
   text-align: right;
   font-size: 0.7rem;
   padding-top: 12px;
+  fontsize: '40px';
 `;
 
 const Hposition = styled.div`
@@ -47,27 +45,24 @@ const Hposition = styled.div`
 
 const Card = props => {
   return (
-
-    <FlipInx>
-
-      <div style={{ display: 'inline' }}>
-        <CardStyled color={props.color}>
-          <Hposition>{props.header}</Hposition>
+    <div style={{ display: 'inline' }}>
+      <FlipInx>
+        <CardStyled color={props.card.color}>
+          <Hposition>{props.card.header}</Hposition>
           <IconPosition>
-            {props.type ? (
-              <Icon type={props.type} />
+            {props.card.type ? (
+              <Icon type={props.card.type} />
             ) : (
-                <i className={props.iconClass} />
-              )}
+              <i className={props.card.iconClass} />
+            )}
           </IconPosition>
           <QtdEmail>
-            <div style={{ fontSize: '40px' }}>{props.valor}</div>
+            <div style={{ fontSize: '40px' }}>{props.card.value}</div>
             <div>Emails</div>
           </QtdEmail>
         </CardStyled>
-      </div>
-    </FlipInx>
-
+      </FlipInx>
+    </div>
   );
 };
 

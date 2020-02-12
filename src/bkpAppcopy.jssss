@@ -1,0 +1,119 @@
+import React, { Fragment } from 'react';
+import './App.css';
+import Card from './components/Card';
+import Header from './components/Header';
+import Table from './components/Table';
+import Template from './components/Template';
+
+function App() {
+  const datatable = [
+    {
+      ap_id: 1,
+      ap_name: 'App de Teste do Thiago Aumentando o Nome',
+      total: '32',
+      waitSend: '4',
+      waitDelivery: '4',
+      Delivered: '24',
+      bounce: '0',
+      complaint: '9'
+    },
+    {
+      ap_id: 2,
+      ap_name: 'Aapp2',
+      total: '32',
+      waitSend: '4',
+      waitDelivery: '4',
+      Delivered: '24',
+      bounce: '665',
+      complaint: '43'
+    },
+    {
+      ap_id: 3,
+      ap_name: 'app3',
+      total: '3asa',
+      waitSend: 'qwq',
+      waitDelivery: 'qwqw4',
+      Delivered: '2sds',
+      bounce: 'sdsd',
+      complaint: 'sdds'
+    }
+  ];
+
+  const total = [
+    {
+      total: '32',
+      waitSend: '4',
+      waitDelivery: '4',
+      Delivered: '24',
+      bounce: '665',
+      complaint: '43'
+    }
+  ];
+
+  return (
+    <Fragment>
+      <Header />
+      <section
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'flex-start'
+        }}
+      >
+        <section
+          style={{
+            width: '200px',
+            marginTop: '24px'
+          }}
+        >
+          <Card type="mail" color={'#a08365'} header={'Total'} valor={74} />
+
+          <Card
+            iconClass="fa fa-paper-plane-o"
+            color={'#22A7F0'}
+            header={'Enviados'}
+            valor={10}
+          />
+
+          <Card
+            type="clock-circle"
+            color={'#8a6dd5'}
+            header={'Aguardando Envio'}
+            valor={16}
+          />
+          <Card
+            type="check"
+            color={'#1ABC9C'}
+            header={'Entregues'}
+            valor={88}
+          />
+          <Card
+            iconClass="fa fa-exclamation-triangle"
+            color={'#FF0000'}
+            header={'Bounce Sofridos'}
+            valor={59}
+          />
+          <Card
+            type="alert"
+            color={'#ffb400'}
+            header={'Bounce Evitados'}
+            valor={23}
+          />
+        </section>
+        <section
+          style={{
+            width: '810px',
+            height: '400px',
+            backgroundColor: 'red',
+            margin: '40px',
+            marginLeft: '100px'
+          }}
+        >
+          <Table dadosvalor={datatable} />
+        </section>
+      </section>
+    </Fragment>
+  );
+}
+
+export default App;
