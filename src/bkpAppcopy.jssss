@@ -117,3 +117,21 @@ function App() {
 }
 
 export default App;
+
+
+
+bkp /13/02
+
+
+
+  return (
+    <Fragment>
+      <Header />
+      <Template
+        cards={cards.map(card => (
+          <Card card={card} />
+        ))}
+        tabela={<Table dadosvalor={datatable} />}
+      />
+    </Fragment>
+  );

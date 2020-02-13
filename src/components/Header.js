@@ -4,8 +4,9 @@ import styled from 'styled-components';
 
 const NavStyled = styled.nav`
   height: 40px;
-  background-color: #93b9e2;
+  background-color: #2684ff;
   padding: 5px;
+  box-shadow: 0px 1px 5px 1px lightgrey;
 `;
 
 const Header = () => {

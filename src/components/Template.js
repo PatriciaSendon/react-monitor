@@ -25,8 +25,9 @@ const SectionGeralStyled = style.div`
 
 export default ({ cards, tabela }) => (
   <SectionGeralStyled>
-    <section>{cards}</section>
+    <section key={10}>{cards}</section>
     <section
+      key={140}
       style={{
         width: '810px',
         height: '400px',

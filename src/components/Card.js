@@ -45,7 +45,7 @@ const Hposition = styled.div`
 
 const Card = props => {
   return (
-    <div style={{ display: 'inline' }}>
+    <div style={{ display: 'inline' }} key={props.header}>
       <FlipInx>
         <CardStyled color={props.card.color}>
           <Hposition>{props.card.header}</Hposition>

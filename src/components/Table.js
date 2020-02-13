@@ -16,6 +16,8 @@ const Table = props => {
 
   return (
     <table>
+      <div></div>
+
       <tr
         style={{
           fontFamily: 'OpenSans-Regular',
@@ -36,13 +38,13 @@ const Table = props => {
   );
 };
 
-const TableHead = styled.div`
-  font-family: OpenSans-Regular;
-  font-size: 18px;
-  color: #dd008f;
-  line-height: 1.2;
-  font-weight: unset;
-`;
+// const TableHead = styled.div`
+//   font-family: OpenSans-Regular;
+//   font-size: 18px;
+//   color: #dd008f;
+//   line-height: 1.2;
+//   font-weight: unset;
+// `;
 
 const Container = styled.div`
   width: 800px;
