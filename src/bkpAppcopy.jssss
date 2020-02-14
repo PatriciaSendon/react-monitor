@@ -135,3 +135,13 @@ bkp /13/02
       />
     </Fragment>
   );
+
+
+
+
+  {props.card.value > '100'?(
+              <div style={{ fontSize: '40px' }}>{props.card.value}</div>
+
+            ) : (
+            <div style={{ fontSize: '40px' }}>{props.card.value}</div>
+            )}

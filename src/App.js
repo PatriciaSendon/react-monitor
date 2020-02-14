@@ -5,6 +5,8 @@ import Header from './components/Header';
 import Template from './components/Template';
 import TableStyle from './components/TableStyle';
 import getUser from './useful/ServiceApi';
+import Chart from './components/Chart'
+
 
 function App() {
   const datatable = [
@@ -112,7 +114,7 @@ function App() {
 
   const cards = [
     {
-      value: '99',
+      value: '933',
       color: '#a08365',
       type: 'mail',
       header: 'Total'
@@ -124,13 +126,13 @@ function App() {
       header: 'Aguardando Envio'
     },
     {
-      value: '318',
+      value: '431',
       color: '#22A7F0',
       iconClass: 'fa fa-paper-plane-o',
       header: 'Enviados'
     },
     {
-      value: '325',
+      value: '35',
       color: '#1ABC9C',
       type: 'check',
       header: 'Entregues'
@@ -142,7 +144,7 @@ function App() {
       header: 'Bounce Sofridos'
     },
     {
-      value: '302',
+      value: '350',
       color: '#ffb400',
       type: 'alert',
       header: 'Bounce Evitados'

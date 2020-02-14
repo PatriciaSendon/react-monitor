@@ -7,12 +7,15 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Pulse from '../useful/animations/Pulse'
 
 const StyledTableCell = withStyles(() => ({
   head: {
     backgroundColor: '#2684ff',
     color: 'white',
-    fontSize: 16
+    fontSize: 16,
+ 
+
   },
   body: {
     fontSize: 16
@@ -29,7 +32,11 @@ const StyledTableRow = withStyles(theme => ({
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 700
+    minWidth: 700,
+    width:1000
+  },
+  container:{
+    width:1000
   }
 });
 
@@ -37,7 +44,9 @@ export default function CustomizedTables(props) {
   const classes = useStyles();
 
   return (
-    <TableContainer component={Paper}>
+    <Pulse>
+
+    <TableContainer className={classes.container} component={Paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
@@ -69,5 +78,6 @@ export default function CustomizedTables(props) {
         </TableBody>
       </Table>
     </TableContainer>
+          </Pulse>
   );
 }

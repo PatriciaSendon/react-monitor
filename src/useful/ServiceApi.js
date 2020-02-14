@@ -21,8 +21,8 @@ const axios = require('axios');
 async function getUser() {
   try {
     const response = await axios.get(
-      'http://172.16.72.181:3001/estatisticasdiariasporapp',
-      { mode: 'no-cors' }
+      '/api/breeds/list/all'
+     
     );
     console.log(response);
   } catch (error) {
