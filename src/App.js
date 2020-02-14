@@ -1,18 +1,18 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import './App.css';
 import Card from './components/Card';
 import Header from './components/Header';
 import Template from './components/Template';
 import TableStyle from './components/TableStyle';
-import getUser from './useful/ServiceApi';
-import Chart from './components/Chart'
-
+import PrepareCardData from './useful/PreparCardData';
 
 function App() {
+  const [state, setState] = useState([]);
+
   const datatable = [
     {
       ap_id: 1,
-      ap_name: 'App de Teste do Thiago Aumentando o Nome',
+      ap_name: 'Karoo',
       total: '32',
       waitSend: '4',
       waitDelivery: '4',
@@ -151,12 +151,12 @@ function App() {
     }
   ];
 
-  const teste = async () => {
-    const t = await getUser();
-    console.log(t);
-  };
+  PrepareCardData().then(res => {
+    if (state !== res) setState(res);
+  });
 
-  teste();
+  console.log(state);
+
   return (
     <Fragment>
       <Header />
@@ -171,3 +171,60 @@ function App() {
 }
 
 export default App;
+
+// class App extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       apiResult: [
+//         {
+//           value: 'nhn',
+//           color: '#a08365',
+//           type: 'mail',
+//           header: 'Total'
+//         }
+//       ],
+//       datatable: [
+//         {
+//           ap_id: 1,
+//           ap_name: 'Karoo',
+//           total: '32',
+//           waitSend: '4',
+//           waitDelivery: '4',
+//           Delivered: '24',
+//           bounce: '0',
+//           complaint: '9'
+//         }
+//       ]
+//     };
+//   }
+
+//   componentWillMount() {
+//     const teste = async () => {
+//       const result = await PrepareCardData();
+//       this.setState({ apiResult: result });
+//       console.log('teste', result);
+//     };
+//     teste();
+//   }
+
+//   render() {
+//     console.log(this.state.apiResult);
+//     const objects = this.state.apiResult;
+//     return (
+//       <Fragment>
+//         <Header />
+//         {objects.length > 0 && (
+//           <Template
+//             cards={objects.map((card, i) => (
+//               <Card key={i} card={card} />
+//             ))}
+//             tabela={<TableStyle dataValue={this.state.datatable} />}
+//           />
+//         )}
+//       </Fragment>
+//     );
+//   }
+// }
+
+// export default App;
