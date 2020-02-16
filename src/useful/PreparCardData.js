@@ -5,7 +5,7 @@ const PrepareCardData = async () => {
   const data = await ServiceApi.getEstatisticasDiarias()
 
 
-  let cardPrepared = [
+  let cardPrepared = { card:[
     {
       value: await await data.total,
       color: '#a08365',
@@ -42,9 +42,9 @@ const PrepareCardData = async () => {
       type: 'alert',
       header: 'Bounce Evitados'
     }
-  ];
+  ]
+};
  
-  console.log(cardPrepared)
 
   return cardPrepared;
 };

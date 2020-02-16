@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -42,10 +42,17 @@ const useStyles = makeStyles({
 
 export default function CustomizedTables(props) {
   const classes = useStyles();
+  //console.log('tp',props)
+  const [dataTable,setDataTable] = useState(props);
+   //console.log('datatabela',dataTable)
+
+  useEffect(()=>{
+    setDataTable(props)
+  },[props])
+
 
   return (
     <Pulse>
-
     <TableContainer className={classes.container} component={Paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
@@ -60,7 +67,7 @@ export default function CustomizedTables(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.dataValue.map(row => (
+          {dataTable.dataValue.map(row => (
             <StyledTableRow key={row.ap_id}>
               <StyledTableCell component="th" scope="row">
                 {row.ap_name}
