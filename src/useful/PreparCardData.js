@@ -1,49 +1,52 @@
-import ApiService from './ServiceApi';
+import ServiceApi from './ServiceApi';
 
 const PrepareCardData = async () => {
-  const data = await ApiService.getEstatisticasDiarias();
 
-  let teste = [
+  const data = await ServiceApi.getEstatisticasDiarias()
+
+
+  let cardPrepared = [
     {
-      value: data.data.total,
+      value: await await data.total,
       color: '#a08365',
       type: 'mail',
       header: 'Total'
     },
     {
-      value: data.data.waitSend,
+      value: await data.waitSend,
       color: '#8a6dd5',
       type: 'clock-circle',
       header: 'Aguardando Envio'
     },
     {
-      value: data.data.waitDelivery,
-      color: '#8a6dd5',
-      type: 'clock-circle',
+      value: await data.waitDelivery,
+      color: '#22A7F0',
+      iconClass: 'fa fa-paper-plane-o',
       header: 'Aguardando Entrega'
     },
     {
-      value: data.data.Delivered,
+      value: await data.Delivered,
       color: '#1ABC9C',
       type: 'check',
       header: 'Entregues'
     },
     {
-      value: data.data.bounce,
+      value: await data.bounce,
       color: '#FF0000',
       iconClass: 'fa fa-exclamation-triangle',
       header: 'Bounce Sofridos'
     },
     {
-      value: data.data.Suprimido,
+      value: await data.Suprimido,
       color: '#ffb400',
       type: 'alert',
       header: 'Bounce Evitados'
     }
   ];
+ 
+  console.log(cardPrepared)
 
-  console.log('dp', teste);
-  return teste;
+  return cardPrepared;
 };
 
 export default PrepareCardData;

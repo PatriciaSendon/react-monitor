@@ -1,8 +1,11 @@
 const axios = require('axios');
 
-const ApiService = {
+const ServiceApi = {
   getEstatisticasDiarias() {
-    return axios.get('/estatisticasdiariastotal');
+    return axios.get('/estatisticasdiariastotal')
+    .then(res=> {return res.data})
+    
+    
   },
 
   getEstatisticasPorApp() {
@@ -14,4 +17,4 @@ const ApiService = {
   }
 };
 
-export default ApiService;
+export default ServiceApi;

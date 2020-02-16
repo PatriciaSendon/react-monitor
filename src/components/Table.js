@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ApiService from '../useful/ServiceApi'
 
 import styled from 'styled-components';
 
 const Table = props => {
-  let body = props.dadosvalor.map(item => (
-    <tr key={item.id} style={{ color: 'green' }}>
-      <td>{item.ap_name}</td>
-      <td>{item.total}</td>
-      <td>{item.WaitSend}</td>
-      <td>{item.Delivered}</td>
-      <td>{item.bounce}</td>
-      <td>{item.complaint}</td>
+
+   
+const [dados,setdados]=useState([]);
+
+
+  
+  //const data = await reponse.Json();
+
+
+
+  let body = dados.map((item,index) => (
+    <tr key={index} style={{ color: 'green' }}>
+      <td>{item}</td>
+    
     </tr>
   ));
 
@@ -27,11 +34,7 @@ const Table = props => {
         }}
       >
         <th>APP</th>
-        <th>Total</th>
-        <th>Aguardando Envio</th>
-        <th>Entregues</th>
-        <th>Bounce Sofridos</th>
-        <th>Bounce Evitados</th>
+       
       </tr>
       {body}
     </table>
