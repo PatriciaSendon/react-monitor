@@ -3,13 +3,10 @@ import PrepareCardData from './PreparCardData';
 import PreparTable from './PreparTableData';
 
 export default async function(timer, copyState) {
-  let data = await setInterval(async function() {
-    let card = await PrepareCardData(copyState);
-    let table = await PreparTable(copyState);
-
+  let data = await setInterval(async () => {
     let stateModel = {
-      card: card.card,
-      Table: table
+      card: (await PrepareCardData(copyState)).card,
+      Table: await PreparTable(copyState)
     };
     console.log('model 5', stateModel);
     return stateModel;
