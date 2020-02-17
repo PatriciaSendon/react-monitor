@@ -7,15 +7,13 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Pulse from '../useful/animations/Pulse'
+import Pulse from '../useful/animations/Pulse';
 
 const StyledTableCell = withStyles(() => ({
   head: {
     backgroundColor: '#2684ff',
     color: 'white',
-    fontSize: 16,
- 
-
+    fontSize: 16
   },
   body: {
     fontSize: 16
@@ -33,58 +31,59 @@ const StyledTableRow = withStyles(theme => ({
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
-    width:1000
+    width: 1000
   },
-  container:{
-    width:1000
+  container: {
+    width: 1000
   }
 });
 
 export default function CustomizedTables(props) {
   const classes = useStyles();
   //console.log('tp',props)
-  const [dataTable,setDataTable] = useState(props);
-   //console.log('datatabela',dataTable)
+  const [dataTable, setDataTable] = useState(props);
+  //console.log('datatabela',dataTable)
 
-  useEffect(()=>{
-    setDataTable(props)
-  },[props])
-
+  useEffect(() => {
+    setDataTable(props);
+  }, [props]);
 
   return (
     <Pulse>
-    <TableContainer className={classes.container} component={Paper}>
-      <Table className={classes.table} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>APP</StyledTableCell>
-            <StyledTableCell align="right">Total</StyledTableCell>
-            <StyledTableCell align="right">Aguardando Envio</StyledTableCell>
-            <StyledTableCell align="right">Aguardando Entrega</StyledTableCell>
-            <StyledTableCell align="right">Entregues</StyledTableCell>
-            <StyledTableCell align="right">Bounce Sofridos</StyledTableCell>
-            <StyledTableCell align="right">Bounce Evitados</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {dataTable.dataValue.map(row => (
-            <StyledTableRow key={row.ap_id}>
-              <StyledTableCell component="th" scope="row">
-                {row.ap_name}
-              </StyledTableCell>
-              <StyledTableCell align="right">{row.total}</StyledTableCell>
-              <StyledTableCell align="right">{row.waitSend}</StyledTableCell>
+      <TableContainer className={classes.container} component={Paper}>
+        <Table className={classes.table} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell>APP</StyledTableCell>
+              <StyledTableCell align="right">Total</StyledTableCell>
+              <StyledTableCell align="right">Aguardando Envio</StyledTableCell>
               <StyledTableCell align="right">
-                {row.waitDelivery}
+                Aguardando Entrega
               </StyledTableCell>
-              <StyledTableCell align="right">{row.Delivered}</StyledTableCell>
-              <StyledTableCell align="right">{row.bounce}</StyledTableCell>
-              <StyledTableCell align="right">{row.complaint}</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-          </Pulse>
+              <StyledTableCell align="right">Entregues</StyledTableCell>
+              <StyledTableCell align="right">Bounce Sofridos</StyledTableCell>
+              <StyledTableCell align="right">Bounce Evitados</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {dataTable.dataValue.map(row => (
+              <StyledTableRow key={row.ap_id}>
+                <StyledTableCell component="th" scope="row">
+                  {row.ap_name}
+                </StyledTableCell>
+                <StyledTableCell align="right">{row.total}</StyledTableCell>
+                <StyledTableCell align="right">{row.waitSend}</StyledTableCell>
+                <StyledTableCell align="right">
+                  {row.waitDelivery}
+                </StyledTableCell>
+                <StyledTableCell align="right">{row.Delivered}</StyledTableCell>
+                <StyledTableCell align="right">{row.bounce}</StyledTableCell>
+                <StyledTableCell align="right">{row.Suprimido}</StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Pulse>
   );
 }
