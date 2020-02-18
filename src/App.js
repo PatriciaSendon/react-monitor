@@ -3,8 +3,9 @@ import './App.css';
 import Header from './components/Header';
 import Template from './components/Template';
 import TableStyle from './components/TableStyle';
-import CaresHook from './components/CaresHook';
-import Timer from './useful/Timer';
+import CardStyle from './components/CardsStyle';
+import PrepareCardData from './useful/PreparCardData';
+import PreparTable from './useful/PreparTableData';
 
 function App() {
   const [state, setState] = useState({
@@ -61,8 +62,16 @@ function App() {
     ]
   });
 
-  async function fechData() {
-    setState(await Timer('5000', state));
+  function fechData() {
+    setInterval(async () => {
+      let copyState = state;
+      let stateModel = {
+        card: (await PrepareCardData(copyState)).card,
+        Table: await PreparTable(copyState)
+      };
+
+      setState(stateModel);
+    }, 10000);
   }
 
   return (
@@ -70,7 +79,7 @@ function App() {
       <Header />
       <Template
         cards={state.card.map((card, i) => (
-          <CaresHook key={i} card={card} />
+          <CardStyle key={i} card={card} />
         ))}
         tabela={<TableStyle dataValue={state.Table} />}
       />

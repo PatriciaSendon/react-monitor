@@ -7,7 +7,7 @@ export default async function(copyState) {
     card: [
       {
         value: await responseCard.total,
-        color: '#a08365',
+        color: '#666',
         type: 'mail',
         header: 'Total'
       },
@@ -31,23 +31,18 @@ export default async function(copyState) {
       },
       {
         value: await responseCard.bounce,
-        color: '#FF0000',
+        color: '#960808',
         iconClass: 'fa fa-exclamation-triangle',
         header: 'Bounce Sofridos'
       },
       {
         value: await responseCard.Suprimido,
-        color: '#ffb400',
+        color: '#fd5d00',
         type: 'alert',
         header: 'Bounce Evitados'
       }
     ]
   };
 
-  let stateModel = {
-    card: cardPrepared.card,
-    Table: copyState
-  };
-
-  return stateModel;
+  return cardPrepared;
 }

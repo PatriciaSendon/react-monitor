@@ -4,9 +4,6 @@ import { Icon } from 'antd';
 import FlipInx from '../useful/animations/FlipInx';
 import { useEffect } from 'react';
 
-
-
-
 const CardStyled = styled.div`
   box-shadow: 1px 1px 5px rgba(184, 177, 184, 1);
   border-radius: 4px;
@@ -16,7 +13,7 @@ const CardStyled = styled.div`
   color: White;
   background-color: ${props => props.color};
   display: grid;
-  padding-bottom:'10px';
+  padding-bottom: '10px';
 
   grid-template-columns: ${props => props.coluns};
   grid-template-rows: 25% 25% 25% 25%;
@@ -31,7 +28,7 @@ const IconPosition = styled.div`
 `;
 
 const QtdEmail = styled.div`
-  grid-column-start:  ${props => props.start};
+  grid-column-start: ${props => props.start};
   grid-column-end: ${props => props.end};
   grid-row-start: 1;
   grid-row-end: 4;
@@ -42,7 +39,7 @@ const QtdEmail = styled.div`
 `;
 
 const TextPosition = styled.div`
-  grid-column-start:  ${props => props.textPositionStart};
+  grid-column-start: ${props => props.textPositionStart};
   grid-column-end: ${props => props.textPositionStart};
   grid-row-start: 4;
   grid-row-end: 4;
@@ -50,7 +47,6 @@ const TextPosition = styled.div`
   font-size: 0.7rem;
   padding-top: 8px;
   fontsize: '40px';
-
 `;
 
 const Hposition = styled.div`
@@ -61,76 +57,57 @@ const Hposition = styled.div`
   font-size: 0.7 rem;
 `;
 
-const CaresHook = props => {
-  let coluns = ''
-  let positionStart = ''
-  let positionEnd = ''
-  let textPositionStart = ''
-
+const CardStyle = props => {
+  let coluns = '';
+  let positionStart = '';
+  let positionEnd = '';
+  let textPositionStart = '';
 
   const [dadosMail, setDadosMail] = useState(props);
 
-
   if (dadosMail.card.value > 999) {
- 
     coluns = '33.3% 33.3% 33.3%';
-    positionStart = '2'
-    positionEnd = '5'
-    textPositionStart = '3'
-  }
-
-  else if (dadosMail.card.value > 99) {
+    positionStart = '2';
+    positionEnd = '5';
+    textPositionStart = '3';
+  } else if (dadosMail.card.value > 99) {
     coluns = '20% 20% 20% 20% 20%';
-    positionStart = '4'
-    positionEnd = '5'
-    textPositionStart = '5'
- 
-
-  }
-    
-  else {
+    positionStart = '4';
+    positionEnd = '5';
+    textPositionStart = '5';
+  } else {
     coluns = '33.3% 33.3% 33.3%';
-    positionStart = '3'
-    positionEnd = '4'
-    textPositionStart = '3'
-
+    positionStart = '3';
+    positionEnd = '4';
+    textPositionStart = '3';
   }
 
   useEffect(() => {
-
-    setDadosMail(props)
-
+    setDadosMail(props);
   }, [props]);
 
-
-
-
-
   return (
-    <div style={{ display: 'inline' }} key={dadosMail.card.header}>
-      <FlipInx>
+    <div style={{ display: 'inline' }}>
+      <FlipInx key={dadosMail.card.value}>
         <CardStyled color={dadosMail.card.color} coluns={coluns}>
           <Hposition>{dadosMail.card.header}</Hposition>
           <IconPosition>
             {dadosMail.card.type ? (
               <Icon type={dadosMail.card.type} />
             ) : (
-                <i className={dadosMail.card.iconClass} />
-              )}
+              <i className={dadosMail.card.iconClass} />
+            )}
           </IconPosition>
           <QtdEmail start={positionStart} end={positionEnd}>
-
             <div style={{ fontSize: '40px' }}>{dadosMail.card.value}</div>
-
           </QtdEmail>
-          <TextPosition textPositionStart={textPositionStart} >Emails</TextPosition>
+          <TextPosition textPositionStart={textPositionStart}>
+            Emails
+          </TextPosition>
         </CardStyled>
       </FlipInx>
-
     </div>
   );
 };
 
-
-
-export default CaresHook;
+export default CardStyle;

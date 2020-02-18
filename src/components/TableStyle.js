@@ -11,19 +11,19 @@ import Pulse from '../useful/animations/Pulse';
 
 const StyledTableCell = withStyles(() => ({
   head: {
-    backgroundColor: '#2684ff',
+    backgroundColor: '#3b424c',
     color: 'white',
-    fontSize: 16
+    fontSize: 15
   },
   body: {
-    fontSize: 16
+    fontSize: 14
   }
 }))(TableCell);
 
 const StyledTableRow = withStyles(theme => ({
   root: {
     '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.background.default
+      backgroundColor: '#ddd'
     }
   }
 }))(TableRow);
@@ -40,16 +40,15 @@ const useStyles = makeStyles({
 
 export default function CustomizedTables(props) {
   const classes = useStyles();
-  //console.log('tp',props)
+
   const [dataTable, setDataTable] = useState(props);
-  //console.log('datatabela',dataTable)
 
   useEffect(() => {
     setDataTable(props);
   }, [props]);
 
   return (
-    <Pulse>
+    <Pulse key={Date.now()}>
       <TableContainer className={classes.container} component={Paper}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
@@ -69,7 +68,7 @@ export default function CustomizedTables(props) {
             {dataTable.dataValue.map(row => (
               <StyledTableRow key={row.ap_id}>
                 <StyledTableCell component="th" scope="row">
-                  {row.ap_name}
+                  <b>{row.ap_name}</b>
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.total}</StyledTableCell>
                 <StyledTableCell align="right">{row.waitSend}</StyledTableCell>
