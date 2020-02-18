@@ -1,21 +1,6 @@
 import style from 'styled-components';
 import React from 'react';
 
-//Aqui devemos passar o objeto por props, achei trabalhoso
-// const SectionGeral = props => {
-//   return (
-//     <section
-//       style={{
-//         display: 'flex',
-//         flexDirection: 'row',
-//         justifyContent: 'flex-start'
-//       }}
-//     >
-//       <Tabela dadosvalor={datatable} />
-//     </section>
-//   );
-// };
-
 const SectionGeralStyled = style.div`
   display: flex;
   flexDirection: row;
@@ -25,7 +10,14 @@ const SectionGeralStyled = style.div`
 
 export default ({ cards, tabela }) => (
   <SectionGeralStyled>
-    <section key={10}>{cards}</section>
+    <section
+      style={{
+        marginLeft: '10px'
+      }}
+      key={10}
+    >
+      {cards}
+    </section>
     <section
       key={140}
       style={{

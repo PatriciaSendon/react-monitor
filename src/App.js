@@ -11,38 +11,38 @@ function App() {
   const [state, setState] = useState({
     card: [
       {
-        value: '997',
-        color: '#a08365',
+        value: '0',
+        color: '#666',
         type: 'mail',
         header: 'Total'
       },
       {
-        value: '1457',
+        value: '0',
         color: '#8a6dd5',
         type: 'clock-circle',
         header: 'Aguardando Envio'
       },
       {
-        value: '431',
+        value: '0',
         color: '#22A7F0',
         iconClass: 'fa fa-paper-plane-o',
         header: 'Enviados'
       },
       {
-        value: '35',
+        value: '0',
         color: '#1ABC9C',
         type: 'check',
         header: 'Entregues'
       },
       {
-        value: '342',
-        color: '#FF0000',
+        value: '0',
+        color: '#960808',
         iconClass: 'fa fa-exclamation-triangle',
         header: 'Bounce Sofridos'
       },
       {
-        value: '350',
-        color: '#ffb400',
+        value: '0',
+        color: '#fd5d00',
         type: 'alert',
         header: 'Bounce Evitados'
       }
@@ -71,8 +71,9 @@ function App() {
       };
 
       setState(stateModel);
-    }, 10000);
+    }, 20000);
   }
+  fechData();
 
   return (
     <Fragment>
@@ -83,13 +84,6 @@ function App() {
         ))}
         tabela={<TableStyle dataValue={state.Table} />}
       />
-      <button
-        onClick={() => {
-          fechData();
-        }}
-      >
-        Atualizar
-      </button>
     </Fragment>
   );
 }

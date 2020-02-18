@@ -12,7 +12,9 @@ const NavStyled = styled.nav`
 const Header = () => {
   return (
     <NavStyled>
-      <MitteLogo />
+      <div style={{ marginLeft: '10px' }}>
+        <MitteLogo />
+      </div>
     </NavStyled>
   );
 };
