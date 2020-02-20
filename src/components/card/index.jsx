@@ -1,4 +1,4 @@
-import React, { useState ,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Icon } from 'antd';
 import FlipInx from '../../useful/animations/FlipInx';
 import {
@@ -16,14 +16,17 @@ const Card = props => {
     let positionEnd = '';
     let textPositionStart = '';
 
-    const [dadosMail, setDadosMail] = useState(props);
+
+
+
+    const [dadosMail, setDadosMail] = useState(props.card);
 
     if (dadosMail.value > 999) {
         coluns = '33.3% 33.3% 33.3%';
         positionStart = '2';
         positionEnd = '5';
         textPositionStart = '3';
-    } else if (dadosMail.card.value > 99) {
+    } else if (dadosMail.value > 99) {
         coluns = '20% 20% 20% 20% 20%';
         positionStart = '4';
         positionEnd = '5';
@@ -36,12 +39,19 @@ const Card = props => {
     }
 
     useEffect(() => {
-        setDadosMail(props);
-    }, [props]);
+
+        setDadosMail(props.card);
+
+    }, [props.card]);
+
+
+
+
 
     return (
-        <div style={{ display: 'inline' }}>
-            <FlipInx key={dadosMail.value}>
+
+        < div style={{ display: 'inline' }}>
+            < FlipInx key={dadosMail.value} >
                 <CardStyled color={dadosMail.color} coluns={coluns}>
                     <Hposition>{dadosMail.header}</Hposition>
                     <IconPosition>
@@ -56,11 +66,29 @@ const Card = props => {
                     </QtdEmail>
                     <TextPosition textPositionStart={textPositionStart}>
                         Emails
-            </TextPosition>
+                      </TextPosition>
                 </CardStyled>
             </FlipInx>
-        </div>
+        </div >
+
+
     );
 };
+
+
+Card.defaultProps = {
+    card: [
+        {
+
+
+            value: 1,
+            color: '#666',
+            type: 'mail',
+            header: 'Total'
+
+        }
+    ]
+
+}
 
 export default Card;

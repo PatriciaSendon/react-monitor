@@ -1,6 +1,6 @@
 import ServiceApi from './ServiceApi';
 
-export default async function(copyState) {
+export default async function() {
   const responseCard = await ServiceApi.getEstatisticasDiarias();
 
   let cardPrepared = {

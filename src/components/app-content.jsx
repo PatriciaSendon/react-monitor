@@ -1,5 +1,5 @@
 
-import React, {  Fragment } from 'react';
+import React, { Fragment } from 'react';
 import '../App.css';
 import Header from './Header';
 import Template from './Template';
@@ -8,15 +8,23 @@ import CardStyle from './card/index'
 
 
 
-const AppContent = ({ card, tables, fechData ,  isFetching }) => (
-	<Fragment>
+const AppContent = ({ card, table, isFetching, fechData }) => (
+
+	< Fragment >
+
 		<Header />
 		<Template
-			card={<CardStyle card={card} />}
-			table={<TableStyle table={tables} />}
+			cards={card.map((card, i) => (
+				<CardStyle key={i} card={card} />
+			))}
+
+			tables={<TableStyle tables={table} />}
 		/>
-		<button onClick={()=>{fechData()}}>atualizar</button>
-	</Fragment>
+		{isFetching && <div>Atualizando...</div>}
+
+
+
+	</Fragment >
 
 
 )

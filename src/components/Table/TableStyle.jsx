@@ -41,12 +41,13 @@ const useStyles = makeStyles({
 
 export default function CustomizedTables(props) {
   const classes = useStyles();
+  console.log('props', props)
 
-  const [dataTable, setDataTable] = useState(props);
+  const [dataTable, setDataTable] = useState(props.tables);
 
   useEffect(() => {
-    setDataTable(props);
-  }, [props]);
+    setDataTable(props.tables);
+  }, [props.tables]);
 
   return (
     <Pulse key={Date.now()}>
@@ -80,4 +81,21 @@ export default function CustomizedTables(props) {
       </TableContainer>
     </Pulse>
   );
+}
+
+
+CustomizedTables.defaultProps = {
+  table: [
+    {
+      ap_id: 1,
+      ap_name: 'Karoo',
+      total: '32',
+      waitSend: '4',
+      waitDelivery: '4',
+      Delivered: '24',
+      bounce: '0',
+      Suprimido: '9'
+    }
+  ]
+
 }

@@ -1,7 +1,8 @@
-import React, {  Component } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import AppContent from './components/app-content';
-
+import PreparTableData from './useful/PreparTableData';
+import PrepareCardData from './useful/PreparCardData';
 
 class App extends Component {
   constructor() {
@@ -12,26 +13,47 @@ class App extends Component {
       isFetching: false
     };
 
-    this.fechData =this.fechData.bind(this)
-    
+    this.fechData = this.fechData.bind(this);
   }
 
-    fechData() {
-     setInterval(async () => {
-       let copyState = state;
-       let stateModel = {
-         card: (await PrepareCardData(copyState)).card,
-         Table: await PreparTable(copyState)
-       };
+  // fechData() {
+  //   debugger;
+  //   console.log('start animacao');
+  //   setInterval(async () => {
+  //     let stateModel = {
+  //       card: (await PrepareCardData()).card,
+  //       table: await PreparTableData()
+  //     };
 
-       setState(stateModel);
-     }, 20000);
-   }
+  //     this.setState(stateModel);
+  //     console.log(this.state);
+  //   }, 5000);
+  // }
+
+  async fechData() {
+    console.log('start fecth');
+
+    let stateModel = {
+      card: (await PrepareCardData()).card,
+      table: await PreparTableData()
+    };
+
+    this.setState(stateModel);
+  }
 
   render() {
-    return <AppContent
-     {...this.state}
-     fechData={this.fetchData} />;
+    return (
+      <>
+        <AppContent {...this.state} fechData={this.fetchData}></AppContent>
+        <button
+          onClick={() => {
+            this.fechData();
+          }}
+        >
+          sddddddddddd
+        </button>
+      </>
+    );
   }
 }
 
