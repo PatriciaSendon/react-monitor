@@ -13,26 +13,23 @@ const NavStyled = styled.nav`
 const Header = () => {
   return (
     <NavStyled>
-      <div className={"conteiner"} style={{ display: "inline" }}>
-
-
-        <div  className={"logoContainer"} style={{ marginLeft: '10px' , display: "inline" }}>
-           <MitteLogo />
-        </div>
-
-        <div id={"menuContainer"}  className={"menuContainer"} style={{
-           display: "inline",
-            height:"30px",
-             width:"100px",
-             marginLeft:"1650px",
-             marginTop:"12px",
-            
-             backgroundColor:"red"
-             }}>
-               <MenuConfig open={{ open: false }}/>
+      <div className={'LogoConteiner'} style={{ display: 'inline-block' }}>
+        <div
+          className={'logo'}
+          style={{ marginLeft: '10px', display: 'inline' }}
+        >
+          <MitteLogo />
         </div>
       </div>
-     
+      <div
+        style={{
+          padding: '13px',
+          float: 'right',
+          display: 'inline-block'
+        }}
+      >
+        <MenuConfig />
+      </div>
     </NavStyled>
   );
 };

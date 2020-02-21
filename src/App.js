@@ -4,6 +4,15 @@ import AppContent from './components/app-content';
 import PreparTableData from './useful/PreparTableData';
 import PrepareCardData from './useful/PreparCardData';
 
+// async fechDataInicial => {
+//   console.log('start fecth');
+
+//   let stateModelInicial = {
+//     card: (await PrepareCardData()).card,
+//     table: await PreparTableData()
+//   };
+// };
+
 class App extends Component {
   constructor() {
     super();
