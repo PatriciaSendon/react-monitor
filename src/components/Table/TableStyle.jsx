@@ -55,8 +55,8 @@ export default function CustomizedTables(props) {
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
-              {Columns.map(col => (
-                <StyledTableCell align={col.align}>{col.title}</StyledTableCell>
+              {Columns.map((col, index) => (
+                <StyledTableCell key={index} align={col.align}>{col.title}</StyledTableCell>
               ))}
             </TableRow>
           </TableHead>

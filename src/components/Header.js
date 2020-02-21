@@ -1,6 +1,7 @@
 import React from 'react';
 import { MitteLogo } from './mitte_pro_white';
 import styled from 'styled-components';
+import MenuConfig from './configMenu';
 
 const NavStyled = styled.nav`
   height: 40px;
@@ -12,9 +13,26 @@ const NavStyled = styled.nav`
 const Header = () => {
   return (
     <NavStyled>
-      <div style={{ marginLeft: '10px' }}>
-        <MitteLogo />
+      <div className={"conteiner"} style={{ display: "inline" }}>
+
+
+        <div  className={"logoContainer"} style={{ marginLeft: '10px' , display: "inline" }}>
+           <MitteLogo />
+        </div>
+
+        <div id={"menuContainer"}  className={"menuContainer"} style={{
+           display: "inline",
+            height:"30px",
+             width:"100px",
+             marginLeft:"1650px",
+             marginTop:"12px",
+            
+             backgroundColor:"red"
+             }}>
+               <MenuConfig open={{ open: false }}/>
+        </div>
       </div>
+     
     </NavStyled>
   );
 };
