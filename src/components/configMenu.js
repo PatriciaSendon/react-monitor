@@ -1,11 +1,11 @@
 import React, { Fragment, useState } from 'react';
 import { Dropdown, Icon } from 'antd';
-import cardConfig from './settings';
+import CardConfig from './settings';
 
 const MenuConfig = () => {
   const [menu, setMenu] = useState(false);
 
-  const menus = <Fragment>{menu ? <cardConfig /> : null}</Fragment>;
+  const menus = <Fragment>{menu ? <CardConfig /> : null}</Fragment>;
 
   return (
     <Fragment>

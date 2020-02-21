@@ -12,11 +12,11 @@ const cardConfigStyle = styled.div`
   padding-bottom: '10px';
 `;
 
-const cardConfig = () => {
+const CardConfig = () => {
   return (
     <cardConfigStyle>
       <h1>jajajaj</h1>
     </cardConfigStyle>
   );
 };
-export default cardConfig;
+export default CardConfig;
