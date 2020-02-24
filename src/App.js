@@ -19,10 +19,14 @@ class App extends Component {
     this.state = {
       card: [],
       table: [],
-      isFetching: false
+      isFetching: false,
+      animationTabela:true,
+      animationCard:true
     };
 
     this.fechData = this.fechData.bind(this);
+    this.controlAnimationTable = this.controlAnimationTable.bind(this)
+    this.controlAnimationCard = this.controlAnimationCard.bind(this)
   }
 
   // fechData() {
@@ -50,10 +54,34 @@ class App extends Component {
     this.setState(stateModel);
   }
 
+  controlAnimationTable(){
+
+    
+   
+    this.setState({ animationTabela :!this.state.animationTabela})
+
+   
+  };
+
+  controlAnimationCard(){
+
+    
+   this.setState({ animationCard:!this.state.animationCard})
+
+    console.log(this.state)
+  };
+
+  
+
+
   render() {
     return (
       <>
-        <AppContent {...this.state} fechData={this.fetchData}></AppContent>
+        <AppContent {...this.state}
+         fechData = {this.fetchData}
+         controlAnimationTable = {this.controlAnimationTable}
+         controlAnimationCard = {this.controlAnimationCard}
+         ></AppContent>
         <button
           onClick={() => {
             this.fechData();

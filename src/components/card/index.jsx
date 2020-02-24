@@ -47,11 +47,10 @@ const Card = props => {
 
 
 
-
     return (
 
         < div style={{ display: 'inline' }}>
-            < FlipInx key={dadosMail.value} >
+            < FlipInx animation={props.animation} key={dadosMail.value} >
                 <CardStyled color={dadosMail.color} coluns={coluns}>
                     <Hposition>{dadosMail.header}</Hposition>
                     <IconPosition>

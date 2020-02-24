@@ -4,7 +4,13 @@ import styled, { keyframes } from 'styled-components';
 const PulseAnimation = keyframes`${pulse}`;
 
 const PulseyDiv = styled.div`
-  animation: 1s ${PulseAnimation};
+  animation: ${props => {
+    if(props.animation)
+     return '1s'
+    return '0s'
+  } }
+    
+     ${PulseAnimation};
 `;
 
 export default PulseyDiv;

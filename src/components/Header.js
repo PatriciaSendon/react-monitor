@@ -13,7 +13,7 @@ const NavStyled = styled.nav`
   box-shadow: 0px 1px 5px 1px lightgrey;
 `;
 
-const Header = () => {
+const Header = ({controlAnimationTable,controlAnimationCard}) => {
   return (
     <NavStyled>
       <div className={'LogoConteiner'} style={{ display: 'inline-block' }}>
@@ -31,7 +31,7 @@ const Header = () => {
           display: 'inline-block'
         }}
       >
-        <MenuConfig />
+        <MenuConfig controlAnimationTable={controlAnimationTable} controlAnimationCard={controlAnimationCard} />
        
       </div>
     </NavStyled>

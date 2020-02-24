@@ -8,17 +8,17 @@ import CardStyle from './card/index'
 
 
 
-const AppContent = ({ card, table, isFetching, fechData }) => (
+const AppContent = ({ card, table, isFetching,animationTabela, animationCard, fechData,controlAnimationTable,controlAnimationCard}) => (
 
 	< Fragment >
 
-		<Header />
+		<Header controlAnimationTable={controlAnimationTable} controlAnimationCard={controlAnimationCard}/>
 		<Template
 			cards={card.map((card, i) => (
-				<CardStyle key={i} card={card} />
+				<CardStyle key={i} card={card} animation={animationCard} />
 			))}
 
-			tables={<TableStyle tables={table} />}
+			tables={<TableStyle tables={table} animation={animationTabela} />}
 		/>
 		{isFetching && <div>Atualizando...</div>}
 

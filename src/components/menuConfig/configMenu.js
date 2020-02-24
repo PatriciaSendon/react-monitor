@@ -2,10 +2,13 @@ import React, { Fragment, useState } from 'react';
 import { Dropdown, Icon } from 'antd';
 import CardConfig from './settings';
 
-const MenuConfig = () => {
+const MenuConfig = ({controlAnimationTable ,controlAnimationCard}) => {
   const [menu, setMenu] = useState(true);
 
-  const menus = <Fragment>{menu ? <CardConfig /> : null}</Fragment>;
+  const menus = <Fragment>{menu ? <CardConfig
+     controlAnimationTable = {controlAnimationTable}
+     controlAnimationCard = {controlAnimationCard}
+      /> : null}</Fragment>;
 
   return (
     <Fragment>

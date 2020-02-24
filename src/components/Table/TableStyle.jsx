@@ -41,7 +41,7 @@ const useStyles = makeStyles({
 
 export default function CustomizedTables(props) {
   const classes = useStyles();
-  console.log('props', props)
+  
 
   const [dataTable, setDataTable] = useState(props.tables);
 
@@ -49,8 +49,11 @@ export default function CustomizedTables(props) {
     setDataTable(props.tables);
   }, [props.tables]);
 
+  
+ console.log('state dentro do card',props)
+
   return (
-    <Pulse key={Date.now()}>
+    <Pulse animation={props.animation} key={Date.now()}>
       <TableContainer className={classes.container} component={Paper}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
