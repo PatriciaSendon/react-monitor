@@ -1,7 +1,10 @@
 import React from 'react';
 import { MitteLogo } from './mitte_pro_white';
 import styled from 'styled-components';
-import MenuConfig from './configMenu';
+import MenuConfig from './menuConfig/configMenu'
+
+
+
 
 const NavStyled = styled.nav`
   height: 40px;
@@ -29,6 +32,7 @@ const Header = () => {
         }}
       >
         <MenuConfig />
+       
       </div>
     </NavStyled>
   );

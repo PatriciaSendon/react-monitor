@@ -3,13 +3,13 @@ import { Dropdown, Icon } from 'antd';
 import CardConfig from './settings';
 
 const MenuConfig = () => {
-  const [menu, setMenu] = useState(false);
+  const [menu, setMenu] = useState(true);
 
   const menus = <Fragment>{menu ? <CardConfig /> : null}</Fragment>;
 
   return (
     <Fragment>
-      <Dropdown
+      <Dropdown visible={true}
         overlayStyle={{
           position: 'absolute',
           maxWidth: '200px'
