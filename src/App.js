@@ -4,14 +4,7 @@ import AppContent from './components/app-content';
 import PreparTableData from './useful/PreparTableData';
 import PrepareCardData from './useful/PreparCardData';
 
-// async fechDataInicial => {
-//   console.log('start fecth');
 
-//   let stateModelInicial = {
-//     card: (await PrepareCardData()).card,
-//     table: await PreparTableData()
-//   };
-// };
 
 class App extends Component {
   constructor() {
@@ -21,56 +14,75 @@ class App extends Component {
       table: [],
       isFetching: false,
       animationTabela:true,
-      animationCard:true
+      animationCard:true,
+      refreshTime:60000,
+      startButtonState : {color:"#FFFFFF", disable:false},
+      stopButtonState : {color:"#A9A9A9", disable:true},
+      stateSelector:false
     };
 
-    this.fechData = this.fechData.bind(this);
+    this.startFetch = this.startFetch.bind(this);
+    this.stopFetch = this.stopFetch.bind(this)
     this.controlAnimationTable = this.controlAnimationTable.bind(this)
     this.controlAnimationCard = this.controlAnimationCard.bind(this)
+    this.controlRefreshTime = this.controlRefreshTime.bind(this)
   }
 
-  // fechData() {
-  //   debugger;
-  //   console.log('start animacao');
-  //   setInterval(async () => {
-  //     let stateModel = {
-  //       card: (await PrepareCardData()).card,
-  //       table: await PreparTableData()
-  //     };
+  startFetch(definition) {
+     
+    if (definition==="Start"){
 
-  //     this.setState(stateModel);
-  //     console.log(this.state);
-  //   }, 5000);
-  // }
+      this.setState({
+        startButtonState:{color:"#A9A9A9", disable:true},
+        stopButtonState:{color:"#FFFFFF", disable:false},
+        stateSelector:true})
 
-  async fechData() {
-    console.log('start fecth');
-
-    let stateModel = {
-      card: (await PrepareCardData()).card,
-      table: await PreparTableData()
-    };
-
-    this.setState(stateModel);
+        let intervalActualization = setInterval(async () => {
+          let stateModel = {
+         card: (await PrepareCardData()).card,
+         table: await PreparTableData()
+       };
+       
+      this.setState(stateModel);
+      
+    }, 3000);
+    
   }
+  
+       console.log('stop')
+    
+       clearInterval(intervalActualization);
+     
+
+
+   }
+
+   
+   
+
 
   controlAnimationTable(){
-
-    
-   
+       
     this.setState({ animationTabela :!this.state.animationTabela})
-
    
   };
 
   controlAnimationCard(){
-
     
    this.setState({ animationCard:!this.state.animationCard})
 
-    console.log(this.state)
   };
 
+  controlRefreshTime(e){
+     console.log('aaaa')
+     console.log(e.target.value)
+      if (this.state.refreshTime >0){
+
+        this.setState({refreshTime:e.target.value*60000})
+      }
+      this.setState({refreshTime:60000})
+
+  }
   
 
 
@@ -78,18 +90,13 @@ class App extends Component {
     return (
       <>
         <AppContent {...this.state}
-         fechData = {this.fetchData}
+         startFetch = {this.startFetch}
+         stopFetch = {this.stopFetch}
          controlAnimationTable = {this.controlAnimationTable}
          controlAnimationCard = {this.controlAnimationCard}
+         controlRefreshTime = {this.controlRefreshTime}
          ></AppContent>
-        <button
-          onClick={() => {
-            this.fechData();
-          }}
-        >
-          sddddddddddd
-        </button>
-      </>
+       </>
     );
   }
 }

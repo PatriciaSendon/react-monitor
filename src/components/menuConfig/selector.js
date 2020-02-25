@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function CustomizedSelects() {
+export default function CustomizedSelects({controlRefreshTime,stateSelector}) {
   const classes = useStyles();
 
   return (
@@ -59,11 +59,14 @@ export default function CustomizedSelects() {
           Atualização
         </InputLabel>
         <BootstrapInput
+         // type={"number"}
+          onChange={controlRefreshTime}
+          disabled={stateSelector}
           inputProps={{
             maxLength: 2
           }}
           id="demo-customized-textbox"
-        />
+        >ewewewewewew</BootstrapInput>
       </FormControl>
     </div>
   );

@@ -80,7 +80,11 @@ const LabelTitleSelectoContainer = styled.div`
 
 
 
-const CardConfig = ({controlAnimationTable,controlAnimationCard}) => {
+const CardConfig = ({
+  controlAnimationTable,
+  controlAnimationCard,
+  controlRefreshTime,
+  stateSelector}) => {
   return (
     <CardConfigStyle>
       <LabelTitleContainer> <b> Animações</b></LabelTitleContainer>
@@ -93,7 +97,7 @@ const CardConfig = ({controlAnimationTable,controlAnimationCard}) => {
       </SwitchContainerCard>
     
       <SelectorContainer>
-        <Selects />
+        <Selects controlRefreshTime= {controlRefreshTime} stateSelector={stateSelector}/>
       </SelectorContainer>
       <LabelTitleSelectoContainer id="ContainerH1">
         <label style={{ fontSize: "15px",fontFamily:  "Arial" }} >Min(s)</label>

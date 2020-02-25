@@ -2,6 +2,8 @@ import React from 'react';
 import { MitteLogo } from './mitte_pro_white';
 import styled from 'styled-components';
 import MenuConfig from './menuConfig/configMenu'
+import PlayButton from './buttons/startButtons'
+import StopButton from './buttons/stopButtons'
 
 
 
@@ -13,7 +15,15 @@ const NavStyled = styled.nav`
   box-shadow: 0px 1px 5px 1px lightgrey;
 `;
 
-const Header = ({controlAnimationTable,controlAnimationCard}) => {
+const Header = ({
+  controlAnimationTable,
+  controlAnimationCard,
+  controlRefreshTime,
+  startFetch,
+  stateSelector,
+  startButtonState,
+  stopFetch,
+  stopButtonState }) => {
   return (
     <NavStyled>
       <div className={'LogoConteiner'} style={{ display: 'inline-block' }}>
@@ -26,14 +36,33 @@ const Header = ({controlAnimationTable,controlAnimationCard}) => {
       </div>
       <div
         style={{
-          padding: '13px',
+         
           float: 'right',
           display: 'inline-block'
         }}
       >
-        <MenuConfig controlAnimationTable={controlAnimationTable} controlAnimationCard={controlAnimationCard} />
+        <MenuConfig 
+          controlAnimationTable = {controlAnimationTable}
+          controlAnimationCard = {controlAnimationCard}
+          controlRefreshTime = {controlRefreshTime}
+          stateSelector={stateSelector} />
+       </div>
+       <div style={{
+          
+          float: 'right',
+          display: 'inline-block'
+        }}>
+          <StopButton stopButtonState={stopButtonState} stopFetch={stopFetch} />
+
+       </div>
+       <div style={{
+          float: 'right',
+          display: 'inline-block'
+        }}>
+        <PlayButton startButtonState = {startButtonState} startFetch={startFetch} ></PlayButton>
+       </div>
        
-      </div>
+     
     </NavStyled>
   );
 };
