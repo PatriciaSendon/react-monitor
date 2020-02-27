@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const CardStyled = styled.div`
   box-shadow: 1px 1px 5px rgba(184, 177, 184, 1);
   border-radius: 4px;
-  width: 155px;
-  height: 70px;
+  width: 175px;
+  height: 90px;
   margin: 20px;
   color: White;
   background-color: ${props => props.color};

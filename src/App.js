@@ -26,6 +26,22 @@ class App extends Component {
     this.controlRefreshTime = this.controlRefreshTime.bind(this);
   }
 
+  componentDidMount() {
+     
+    async () => {
+      let stateModel = {
+        card: (await PrepareCardData()).card,
+        table: await PreparTableData()
+      };
+
+      this.setState(stateModel);
+
+    
+    this.startFetch();
+
+
+  }
+
   interval = null;
 
   startFetch() {
@@ -42,7 +58,7 @@ class App extends Component {
       };
 
       this.setState(stateModel);
-    }, 3000);
+    }, this.state.refreshTime);
   }
 
   stopFetch() {
