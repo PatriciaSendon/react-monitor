@@ -41,7 +41,7 @@ const useStyles = makeStyles({
 
 export default function CustomizedTables(props) {
   const classes = useStyles();
-  
+
 
   const [dataTable, setDataTable] = useState(props.tables);
 
@@ -49,8 +49,7 @@ export default function CustomizedTables(props) {
     setDataTable(props.tables);
   }, [props.tables]);
 
-  
- console.log('state dentro do card',props)
+
 
   return (
     <Pulse animation={props.animation} key={Date.now()}>

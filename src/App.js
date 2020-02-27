@@ -20,20 +20,22 @@ class App extends Component {
     };
 
     this.startFetch = this.startFetch.bind(this);
-    // this.stopFetch = this.stopFetch.bind(this);
+    this.stopFetch = this.stopFetch.bind(this);
     this.controlAnimationTable = this.controlAnimationTable.bind(this);
     this.controlAnimationCard = this.controlAnimationCard.bind(this);
     this.controlRefreshTime = this.controlRefreshTime.bind(this);
   }
 
-  startFetch(definition) {
+  interval = null;
+
+  startFetch() {
     this.setState({
       startButtonState: { color: '#A9A9A9', disable: true },
       stopButtonState: { color: '#FFFFFF', disable: false },
       stateSelector: true
     });
 
-    let intervalActualization = setInterval(async () => {
+    this.interval = setInterval(async () => {
       let stateModel = {
         card: (await PrepareCardData()).card,
         table: await PreparTableData()
@@ -41,10 +43,16 @@ class App extends Component {
 
       this.setState(stateModel);
     }, 3000);
+  }
 
-    console.log('stop');
+  stopFetch() {
+    this.setState({
+      startButtonState: { color: '#FFFFFF', disable: false },
+      stopButtonState: { color: '#A9A9A9', disable: true },
+      stateSelector: false
+    });
 
-    //  clearInterval(intervalActualization);
+    clearInterval(this.interval);
   }
 
   controlAnimationTable() {
@@ -56,12 +64,7 @@ class App extends Component {
   }
 
   controlRefreshTime(e) {
-    console.log('aaaa');
-    console.log(e.target.value);
-    if (this.state.refreshTime > 0) {
-      this.setState({ refreshTime: e.target.value * 60000 });
-    }
-    this.setState({ refreshTime: 60000 });
+    this.setState({ refreshTime: e * 60000 });
   }
 
   render() {

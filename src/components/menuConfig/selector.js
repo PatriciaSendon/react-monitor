@@ -4,10 +4,6 @@ import 'antd/dist/antd.css';
 
 const { Option } = Select;
 
-function onChange(value) {
-  console.log(`selected ${value}`);
-}
-
 export default function SelectComponent({ controlRefreshTime, stateSelector }) {
   return (
     <Select
@@ -17,13 +13,15 @@ export default function SelectComponent({ controlRefreshTime, stateSelector }) {
         borderRadius: '4px',
         backgroundColor: '#f4f4f4'
       }}
-      onChange={onChange}
+      disabled={stateSelector}
+      onChange={controlRefreshTime}
+      defaultValue={'1'}
     >
       <Option value="1">1</Option>
       <Option value="2">2</Option>
       <Option value="3">3</Option>
-      <Option value="4">4</Option>
-      <Option value="5">5</Option>
+      <Option value="7">7</Option>
+      <Option value="10">10</Option>
     </Select>
   );
 }
