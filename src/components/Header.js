@@ -1,15 +1,11 @@
 import React from 'react';
 import { MitteLogo } from './mitte_pro_white';
 import styled from 'styled-components';
-import MenuConfig from './menuConfig/configMenu'
-import PlayButton from './buttons/startButtons'
-import StopButton from './buttons/stopButtons'
-
-
-
+import MenuConfig from './menuConfig/configMenu';
+import PlayButton from './buttons/startButtons';
+import StopButton from './buttons/stopButtons';
 
 const NavStyled = styled.nav`
-  height: 40px;
   background-color: #1961bf;
   padding: 5px;
   box-shadow: 0px 1px 5px 1px lightgrey;
@@ -23,7 +19,8 @@ const Header = ({
   stateSelector,
   startButtonState,
   stopFetch,
-  stopButtonState }) => {
+  stopButtonState
+}) => {
   return (
     <NavStyled>
       <div className={'LogoConteiner'} style={{ display: 'inline-block' }}>
@@ -36,33 +33,36 @@ const Header = ({
       </div>
       <div
         style={{
-         
           float: 'right',
           display: 'inline-block'
         }}
       >
-        <MenuConfig 
-          controlAnimationTable = {controlAnimationTable}
-          controlAnimationCard = {controlAnimationCard}
-          controlRefreshTime = {controlRefreshTime}
-          stateSelector={stateSelector} />
-       </div>
-       <div style={{
-          
+        <MenuConfig
+          controlAnimationTable={controlAnimationTable}
+          controlAnimationCard={controlAnimationCard}
+          controlRefreshTime={controlRefreshTime}
+          stateSelector={stateSelector}
+        />
+      </div>
+      <div
+        style={{
           float: 'right',
           display: 'inline-block'
-        }}>
-          <StopButton stopButtonState={stopButtonState} stopFetch={stopFetch} />
-
-       </div>
-       <div style={{
+        }}
+      >
+        <StopButton stopButtonState={stopButtonState} stopFetch={stopFetch} />
+      </div>
+      <div
+        style={{
           float: 'right',
           display: 'inline-block'
-        }}>
-        <PlayButton startButtonState = {startButtonState} startFetch={startFetch} ></PlayButton>
-       </div>
-       
-     
+        }}
+      >
+        <PlayButton
+          startButtonState={startButtonState}
+          startFetch={startFetch}
+        ></PlayButton>
+      </div>
     </NavStyled>
   );
 };
