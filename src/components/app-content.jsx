@@ -14,6 +14,7 @@ const AppContent = ({
 	stopFetch,
 	isFetching,
 	startFetch,
+	refreshValue,
 	stateSelector,
 	animationCard,
 	stopButtonState,
@@ -42,6 +43,7 @@ const AppContent = ({
 				stateSelector={stateSelector}
 				stateSwitchTable={stateSwitchTable}
 				stateSwitchCard={stateSwitchCard}
+				refreshValue={refreshValue}
 
 			/>
 			<Template

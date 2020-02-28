@@ -87,7 +87,8 @@ const CardConfig = ({
   controlRefreshTime,
   stateSelector,
   stateSwitchTable,
-  stateSwitchCard
+  stateSwitchCard,
+  refreshValue
 }) => {
   return (
     <CardConfigStyle>
@@ -117,6 +118,7 @@ const CardConfig = ({
         <Selects
           controlRefreshTime={controlRefreshTime}
           stateSelector={stateSelector}
+          refreshValue={refreshValue}
         />
       </SelectorContainer>
       <LabelTitleSelectoContainer id="ContainerH1">

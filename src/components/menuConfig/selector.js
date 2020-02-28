@@ -4,7 +4,11 @@ import 'antd/dist/antd.css';
 
 const { Option } = Select;
 
-export default function SelectComponent({ controlRefreshTime, stateSelector }) {
+export default function SelectComponent({
+  controlRefreshTime,
+  stateSelector,
+  refreshValue
+}) {
   return (
     <Select
       style={{
@@ -16,6 +20,7 @@ export default function SelectComponent({ controlRefreshTime, stateSelector }) {
       disabled={stateSelector}
       onChange={controlRefreshTime}
       defaultValue={'1'}
+      value={refreshValue}
     >
       <Option value="1">1</Option>
       <Option value="2">2</Option>

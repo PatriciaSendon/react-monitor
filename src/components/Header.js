@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import MenuConfig from './menuConfig/configMenu';
 import PlayButton from './buttons/startButtons';
 import StopButton from './buttons/stopButtons';
+import RotateDiv from '../useful/animations/Rotate';
 
 const NavStyled = styled.nav`
   background-color: #1961bf;
@@ -21,7 +22,8 @@ const Header = ({
   stopFetch,
   stopButtonState,
   stateSwitchTable,
-  stateSwitchCard
+  stateSwitchCard,
+  refreshValue
 }) => {
   return (
     <NavStyled>
@@ -39,14 +41,17 @@ const Header = ({
           display: 'inline-block'
         }}
       >
-        <MenuConfig
-          controlAnimationTable={controlAnimationTable}
-          controlAnimationCard={controlAnimationCard}
-          controlRefreshTime={controlRefreshTime}
-          stateSelector={stateSelector}
-          stateSwitchTable={stateSwitchTable}
-          stateSwitchCard={stateSwitchCard}
-        />
+        <RotateDiv>
+          <MenuConfig
+            controlAnimationTable={controlAnimationTable}
+            controlAnimationCard={controlAnimationCard}
+            controlRefreshTime={controlRefreshTime}
+            stateSelector={stateSelector}
+            stateSwitchTable={stateSwitchTable}
+            stateSwitchCard={stateSwitchCard}
+            refreshValue={refreshValue}
+          />
+        </RotateDiv>
       </div>
       <div
         style={{

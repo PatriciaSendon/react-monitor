@@ -12,6 +12,7 @@ class App extends Component {
       animationTabela: true,
       animationCard: true,
       refreshTime: 60000,
+      refreshValue: 1,
       startButtonState: { color: '#FFFFFF', disable: false },
       stopButtonState: { color: '#A9A9A9', disable: true },
       stateSelector: false,
@@ -48,7 +49,7 @@ class App extends Component {
 
     this.interval = setInterval(async () => {
       this.RefreshState();
-    }, 3000);
+    }, this.state.refreshTime);
   }
 
   stopFetch() {
@@ -76,7 +77,10 @@ class App extends Component {
   }
 
   controlRefreshTime(e) {
-    this.setState({ refreshTime: e * 6000 });
+    this.setState({
+      refreshTime: e * 6000,
+      refreshValue: e
+    });
   }
 
   render() {
