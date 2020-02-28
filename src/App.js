@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import AppContent from './components/app-content';
-import PreparTableData from './useful/PreparTableData';
-import PrepareCardData from './useful/PreparCardData';
+import PreparaData from './useful/preparState'
 
 class App extends Component {
   constructor() {
@@ -28,13 +27,9 @@ class App extends Component {
 
   componentDidMount() {
      
-    async () => {
-      let stateModel = {
-        card: (await PrepareCardData()).card,
-        table: await PreparTableData()
-      };
+   let stateModel = PreparaData()
 
-      this.setState(stateModel);
+    this.setState(stateModel);
 
     
     this.startFetch();
@@ -52,10 +47,9 @@ class App extends Component {
     });
 
     this.interval = setInterval(async () => {
-      let stateModel = {
-        card: (await PrepareCardData()).card,
-        table: await PreparTableData()
-      };
+      
+      let stateModel =  PreparaData();
+
 
       this.setState(stateModel);
     }, this.state.refreshTime);
