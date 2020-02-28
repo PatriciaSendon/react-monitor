@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import AppContent from './components/app-content';
-import PreparaData from './useful/preparState'
+import PreparaData from './useful/preparState';
 
 class App extends Component {
   constructor() {
@@ -26,15 +26,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-     
-   let stateModel = PreparaData()
+    this.RefreshState();
+    this.startFetch();
+  }
+
+  async RefreshState() {
+    let stateModel = await PreparaData();
 
     this.setState(stateModel);
-
-    
-    this.startFetch();
-
-
   }
 
   interval = null;
@@ -47,11 +46,7 @@ class App extends Component {
     });
 
     this.interval = setInterval(async () => {
-      
-      let stateModel =  PreparaData();
-
-
-      this.setState(stateModel);
+      this.RefreshState();
     }, this.state.refreshTime);
   }
 
@@ -74,7 +69,7 @@ class App extends Component {
   }
 
   controlRefreshTime(e) {
-    this.setState({ refreshTime: e * 60000 });
+    this.setState({ refreshTime: e * 6000 });
   }
 
   render() {
