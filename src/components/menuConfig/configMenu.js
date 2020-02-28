@@ -8,7 +8,9 @@ const MenuConfig = ({
   controlAnimationTable,
   controlAnimationCard,
   stateSelector,
-  controlRefreshTime
+  controlRefreshTime,
+  stateSwitchTable,
+  stateSwitchCard
 }) => {
   const [menu, setMenu] = useState(false);
 
@@ -20,6 +22,8 @@ const MenuConfig = ({
           controlAnimationCard={controlAnimationCard}
           controlRefreshTime={controlRefreshTime}
           stateSelector={stateSelector}
+          stateSwitchTable={stateSwitchTable}
+          stateSwitchCard={stateSwitchCard}
         />
       ) : null}
     </Fragment>

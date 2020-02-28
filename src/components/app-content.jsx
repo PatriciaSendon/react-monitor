@@ -9,52 +9,56 @@ import CardStyle from './card/index'
 
 
 const AppContent = ({
-	 card,
-	 table,
-	 startFetch,
-	 stopFetch,
-	 isFetching,
-	 stateSelector,
-	 animationCard,
-	 stopButtonState,
-	 animationTabela,
-	 startButtonState,
-	 controlRefreshTime,
-	 controlAnimationCard,
-	 controlAnimationTable,
-	}) => (
-
-		
-
-	< Fragment >
-
-
-		<Header
-			startFetch={startFetch}
-		    controlAnimationTable = {controlAnimationTable}
-	    	controlAnimationCard = {controlAnimationCard}
-			controlRefreshTime = {controlRefreshTime}
-			startButtonState = {startButtonState}
-			stopButtonState={stopButtonState}
-			stopFetch={stopFetch}
-			stateSelector={stateSelector}
-
-			 />
-		<Template
-			cards={card.map((card, i) => (
-				<CardStyle key={i} card={card} animation={animationCard} />
-			))}
-
-			tables={<TableStyle tables={table} animation={animationTabela} />}
-		/>
-		{isFetching && <div>Atualizando...</div>}
+	card,
+	table,
+	stopFetch,
+	isFetching,
+	startFetch,
+	stateSelector,
+	animationCard,
+	stopButtonState,
+	stateSwitchCard,
+	animationTabela,
+	stateSwitchTable,
+	startButtonState,
+	controlRefreshTime,
+	controlAnimationCard,
+	controlAnimationTable,
+}) => (
 
 
 
-	</Fragment >
+		< Fragment >
 
 
-)
+			<Header
+				startFetch={startFetch}
+				controlAnimationTable={controlAnimationTable}
+				controlAnimationCard={controlAnimationCard}
+				controlRefreshTime={controlRefreshTime}
+				startButtonState={startButtonState}
+				stopButtonState={stopButtonState}
+				stopFetch={stopFetch}
+				stateSelector={stateSelector}
+				stateSwitchTable={stateSwitchTable}
+				stateSwitchCard={stateSwitchCard}
+
+			/>
+			<Template
+				cards={card.map((card, i) => (
+					<CardStyle key={i} card={card} animation={animationCard} />
+				))}
+
+				tables={<TableStyle tables={table} animation={animationTabela} />}
+			/>
+			{isFetching && <div>Atualizando...</div>}
+
+
+
+		</Fragment >
+
+
+	)
 
 
 export default AppContent;

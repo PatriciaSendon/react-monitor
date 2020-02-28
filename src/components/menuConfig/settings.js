@@ -85,7 +85,9 @@ const CardConfig = ({
   controlAnimationTable,
   controlAnimationCard,
   controlRefreshTime,
-  stateSelector
+  stateSelector,
+  stateSwitchTable,
+  stateSwitchCard
 }) => {
   return (
     <CardConfigStyle>
@@ -93,11 +95,19 @@ const CardConfig = ({
         <b> Animações</b>
       </LabelTitleContainer>
       <SwitchContainerTabela id="ContainerSwitch">
-        <Switch controlAnimation={controlAnimationTable} name={'Tabela'} />
+        <Switch
+          controlAnimation={controlAnimationTable}
+          stateSwitch={stateSwitchTable}
+          name={'Tabela'}
+        />
       </SwitchContainerTabela>
 
       <SwitchContainerCard>
-        <Switch controlAnimation={controlAnimationCard} name={'Card'} />
+        <Switch
+          controlAnimation={controlAnimationCard}
+          stateSwitch={stateSwitchCard}
+          name={'Card'}
+        />
       </SwitchContainerCard>
       <LabelTitleSelectoContainerTempoAtualizacao>
         <b>Atualização</b>

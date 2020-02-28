@@ -19,7 +19,9 @@ const Header = ({
   stateSelector,
   startButtonState,
   stopFetch,
-  stopButtonState
+  stopButtonState,
+  stateSwitchTable,
+  stateSwitchCard
 }) => {
   return (
     <NavStyled>
@@ -42,6 +44,8 @@ const Header = ({
           controlAnimationCard={controlAnimationCard}
           controlRefreshTime={controlRefreshTime}
           stateSelector={stateSelector}
+          stateSwitchTable={stateSwitchTable}
+          stateSwitchCard={stateSwitchCard}
         />
       </div>
       <div

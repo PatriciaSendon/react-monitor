@@ -9,13 +9,14 @@ class App extends Component {
     this.state = {
       card: [],
       table: [],
-      isFetching: false,
       animationTabela: true,
       animationCard: true,
       refreshTime: 60000,
       startButtonState: { color: '#FFFFFF', disable: false },
       stopButtonState: { color: '#A9A9A9', disable: true },
-      stateSelector: false
+      stateSelector: false,
+      stateSwitchTable: true,
+      stateSwitchCard: true
     };
 
     this.startFetch = this.startFetch.bind(this);
@@ -47,7 +48,7 @@ class App extends Component {
 
     this.interval = setInterval(async () => {
       this.RefreshState();
-    }, this.state.refreshTime);
+    }, 3000);
   }
 
   stopFetch() {
@@ -61,11 +62,17 @@ class App extends Component {
   }
 
   controlAnimationTable() {
-    this.setState({ animationTabela: !this.state.animationTabela });
+    this.setState({
+      animationTabela: !this.state.animationTabela,
+      stateSwitchTable: !this.state.stateSwitchTable
+    });
   }
 
   controlAnimationCard() {
-    this.setState({ animationCard: !this.state.animationCard });
+    this.setState({
+      animationCard: !this.state.animationCard,
+      stateSwitchCard: !this.state.stateSwitchCard
+    });
   }
 
   controlRefreshTime(e) {
