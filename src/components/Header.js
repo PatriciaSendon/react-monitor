@@ -4,12 +4,12 @@ import styled from 'styled-components';
 import MenuConfig from './menuConfig/configMenu';
 import PlayButton from './buttons/startButtons';
 import StopButton from './buttons/stopButtons';
-import RotateDiv from '../useful/animations/Rotate';
 
 const NavStyled = styled.nav`
   background-color: #1961bf;
   padding: 5px;
   box-shadow: 0px 1px 5px 1px lightgrey;
+  z-index: 1;
 `;
 
 const Header = ({
@@ -41,17 +41,15 @@ const Header = ({
           display: 'inline-block'
         }}
       >
-        <RotateDiv>
-          <MenuConfig
-            controlAnimationTable={controlAnimationTable}
-            controlAnimationCard={controlAnimationCard}
-            controlRefreshTime={controlRefreshTime}
-            stateSelector={stateSelector}
-            stateSwitchTable={stateSwitchTable}
-            stateSwitchCard={stateSwitchCard}
-            refreshValue={refreshValue}
-          />
-        </RotateDiv>
+        <MenuConfig
+          controlAnimationTable={controlAnimationTable}
+          controlAnimationCard={controlAnimationCard}
+          controlRefreshTime={controlRefreshTime}
+          stateSelector={stateSelector}
+          stateSwitchTable={stateSwitchTable}
+          stateSwitchCard={stateSwitchCard}
+          refreshValue={refreshValue}
+        />
       </div>
       <div
         style={{

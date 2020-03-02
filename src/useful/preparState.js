@@ -1,16 +1,11 @@
-import PreparTableData from './PreparTableData';
+import PrepareTableData from './PreparTableData';
 import PrepareCardData from './PreparCardData';
 
-export default async function PreparaData()  {
+export default async function PreparaData() {
+  let stateModel = {
+    card: (await PrepareCardData()).card,
+    table: await PrepareTableData()
+  };
 
-
-    let stateModel = {
-        card: (await PrepareCardData()).card,
-        table: await PreparTableData()
-    };
-
-    return stateModel
-
-
-
+  return stateModel;
 }

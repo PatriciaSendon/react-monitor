@@ -14,6 +14,7 @@ const CardConfigStyle = styled.div`
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   grid-template-rows: 25% 25% 25% 25%;
+  z-index: -1;
 `;
 
 const LabelTitleContainer = styled.label`
@@ -23,6 +24,7 @@ const LabelTitleContainer = styled.label`
   grid-row-end: 1;
   padding: 8px;
   padding-left: 13px;
+  z-index: 0;
 `;
 
 const SwitchContainerTabela = styled.div`

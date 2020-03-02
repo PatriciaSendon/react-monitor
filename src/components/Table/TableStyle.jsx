@@ -14,10 +14,11 @@ const StyledTableCell = withStyles(() => ({
   head: {
     backgroundColor: '#3b424c',
     color: 'white',
-    fontSize: 15
+    fontSize: 20
   },
   body: {
-    fontSize: 14
+    fontSize: 18,
+    textAlign: 'center'
   }
 }))(TableCell);
 
@@ -42,17 +43,18 @@ const useStyles = makeStyles({
 export default function CustomizedTables(props) {
   const classes = useStyles();
 
-
   const [dataTable, setDataTable] = useState(props.tables);
 
   useEffect(() => {
     setDataTable(props.tables);
   }, [props.tables]);
 
+  console.log(props)
+
 
 
   return (
-    <Pulse animation={props.animation} key={Date.now()}>
+    <Pulse animation={props.animation} key={props.total}>
       <TableContainer className={classes.container} component={Paper}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>

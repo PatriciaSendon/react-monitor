@@ -1,7 +1,16 @@
-import { rotateIn } from 'react-animations';
-
 import styled, { keyframes } from 'styled-components';
-const rotateAnimation = keyframes`${rotateIn}`;
+
+const rotateAnimation = keyframes`${{
+  from: {
+    transformOrigin: 'center',
+    transform: 'rotate3d(0, 0, 1, -200deg)'
+  },
+  to: {
+    transformOrigin: 'center',
+    transform: 'none'
+  }
+}}
+    `;
 
 const RotateDiv = styled.div`
   animation: 1s ${rotateAnimation};

@@ -51,7 +51,7 @@ const AppContent = ({
 					<CardStyle key={i} card={card} animation={animationCard} />
 				))}
 
-				tables={<TableStyle tables={table} animation={animationTabela} />}
+				tables={<TableStyle total={card[0] ? card[0].value : null} tables={table} animation={animationTabela} />}
 			/>
 			{isFetching && <div>Atualizando...</div>}
 
