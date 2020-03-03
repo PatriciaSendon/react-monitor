@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import '../App.css';
 import Header from './Header';
 import Template from './Template';
-import TableStyle from './Table/TableStyle'
+import TablePaginations from './Table/TablePagination'
 import CardStyle from './card/index'
 
 
@@ -51,7 +51,7 @@ const AppContent = ({
 					<CardStyle key={i} card={card} animation={animationCard} />
 				))}
 
-				tables={<TableStyle total={card[0] ? card[0].value : null} tables={table} animation={animationTabela} />}
+				tables={<TablePaginations total={card[0] ? card[0].value : null} tables={table} animation={animationTabela} />}
 			/>
 			{isFetching && <div>Atualizando...</div>}
 
