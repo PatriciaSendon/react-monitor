@@ -1,91 +1,102 @@
-import React, { Fragment, useState } from 'react';
+import React, { Component } from 'react';
 import './App.css';
-import Header from './components/Header';
-import Template from './components/Template';
-import TableStyle from './components/TableStyle';
-import CardStyle from './components/CardsStyle';
-import PrepareCardData from './useful/PreparCardData';
-import PreparTable from './useful/PreparTableData';
+import AppContent from './components/app-content';
+import PreparaData from './useful/preparState';
 
-function App() {
-  const [state, setState] = useState({
-    card: [
-      {
-        value: '0',
-        color: '#666',
-        type: 'mail',
-        header: 'Total'
-      },
-      {
-        value: '0',
-        color: '#8a6dd5',
-        type: 'clock-circle',
-        header: 'Aguardando Envio'
-      },
-      {
-        value: '0',
-        color: '#22A7F0',
-        iconClass: 'fa fa-paper-plane-o',
-        header: 'Enviados'
-      },
-      {
-        value: '0',
-        color: '#1ABC9C',
-        type: 'check',
-        header: 'Entregues'
-      },
-      {
-        value: '0',
-        color: '#960808',
-        iconClass: 'fa fa-exclamation-triangle',
-        header: 'Bounce Sofridos'
-      },
-      {
-        value: '0',
-        color: '#fd5d00',
-        type: 'alert',
-        header: 'Bounce Evitados'
-      }
-    ],
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      card: [],
+      table: [],
+      animationTabela: true,
+      animationCard: true,
+      refreshTime: 60000,
+      refreshValue: 1,
+      startButtonState: { color: '#FFFFFF', disable: false },
+      stopButtonState: { color: '#A9A9A9', disable: true },
+      stateSelector: false,
+      stateSwitchTable: true,
+      stateSwitchCard: true
+    };
 
-    Table: [
-      {
-        ap_id: 1,
-        ap_name: 'Karoo',
-        total: '32',
-        waitSend: '4',
-        waitDelivery: '4',
-        Delivered: '24',
-        bounce: '0',
-        Suprimido: '9'
-      }
-    ]
-  });
-
-  function fechData() {
-    setInterval(async () => {
-      let copyState = state;
-      let stateModel = {
-        card: (await PrepareCardData(copyState)).card,
-        Table: await PreparTable(copyState)
-      };
-
-      setState(stateModel);
-    }, 20000);
+    this.startFetch = this.startFetch.bind(this);
+    this.stopFetch = this.stopFetch.bind(this);
+    this.controlAnimationTable = this.controlAnimationTable.bind(this);
+    this.controlAnimationCard = this.controlAnimationCard.bind(this);
+    this.controlRefreshTime = this.controlRefreshTime.bind(this);
   }
-  fechData();
 
-  return (
-    <Fragment>
-      <Header />
-      <Template
-        cards={state.card.map((card, i) => (
-          <CardStyle key={i} card={card} />
-        ))}
-        tabela={<TableStyle dataValue={state.Table} />}
-      />
-    </Fragment>
-  );
+  componentDidMount() {
+    this.RefreshState();
+    this.startFetch();
+  }
+
+  async RefreshState() {
+    let stateModel = await PreparaData();
+
+    this.setState(stateModel);
+  }
+
+  interval = null;
+
+  startFetch() {
+    this.setState({
+      startButtonState: { color: '#A9A9A9', disable: true },
+      stopButtonState: { color: '#FFFFFF', disable: false },
+      stateSelector: true
+    });
+
+    this.interval = setInterval(async () => {
+      this.RefreshState();
+    }, this.state.refreshTime);
+  }
+
+  stopFetch() {
+    this.setState({
+      startButtonState: { color: '#FFFFFF', disable: false },
+      stopButtonState: { color: '#A9A9A9', disable: true },
+      stateSelector: false
+    });
+
+    clearInterval(this.interval);
+  }
+
+  controlAnimationTable() {
+    this.setState({
+      animationTabela: !this.state.animationTabela,
+      stateSwitchTable: !this.state.stateSwitchTable
+    });
+  }
+
+  controlAnimationCard() {
+    this.setState({
+      animationCard: !this.state.animationCard,
+      stateSwitchCard: !this.state.stateSwitchCard
+    });
+  }
+
+  controlRefreshTime(e) {
+    this.setState({
+      refreshTime: e * 6000,
+      refreshValue: e
+    });
+  }
+
+  render() {
+    return (
+      <>
+        <AppContent
+          {...this.state}
+          startFetch={this.startFetch}
+          stopFetch={this.stopFetch}
+          controlAnimationTable={this.controlAnimationTable}
+          controlAnimationCard={this.controlAnimationCard}
+          controlRefreshTime={this.controlRefreshTime}
+        ></AppContent>
+      </>
+    );
+  }
 }
 
 export default App;

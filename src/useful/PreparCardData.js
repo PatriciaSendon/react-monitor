@@ -1,6 +1,6 @@
 import ServiceApi from './ServiceApi';
 
-export default async function(copyState) {
+export default async function() {
   const responseCard = await ServiceApi.getEstatisticasDiarias();
 
   let cardPrepared = {
@@ -30,16 +30,17 @@ export default async function(copyState) {
         header: 'Entregues'
       },
       {
-        value: await responseCard.bounce,
-        color: '#960808',
-        iconClass: 'fa fa-exclamation-triangle',
-        header: 'Bounce Sofridos'
-      },
-      {
         value: await responseCard.Suprimido,
-        color: '#fd5d00',
+        color: '#ffbd45',
         type: 'alert',
         header: 'Bounce Evitados'
+      },
+
+      {
+        value: await responseCard.bounce,
+        color: '#f54c44',
+        iconClass: 'fa fa-exclamation-triangle',
+        header: 'Bounce Sofridos'
       }
     ]
   };

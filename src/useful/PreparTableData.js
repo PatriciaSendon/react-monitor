@@ -1,6 +1,6 @@
 import ServiceApi from './ServiceApi';
 
-export default async function(copyState) {
+export default async function() {
   const responseTable = await ServiceApi.getEstatisticasPorApp();
 
   function orderPerTotalValue(a, b) {

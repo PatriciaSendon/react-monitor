@@ -7,16 +7,18 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Pulse from '../useful/animations/Pulse';
+import Pulse from '../../useful/animations/Pulse';
+import Columns from './columns';
 
 const StyledTableCell = withStyles(() => ({
   head: {
     backgroundColor: '#3b424c',
     color: 'white',
-    fontSize: 15
+    fontSize: 20
   },
   body: {
-    fontSize: 14
+    fontSize: 18,
+    textAlign: 'center'
   }
 }))(TableCell);
 
@@ -41,31 +43,29 @@ const useStyles = makeStyles({
 export default function CustomizedTables(props) {
   const classes = useStyles();
 
-  const [dataTable, setDataTable] = useState(props);
+  const [dataTable, setDataTable] = useState(props.tables);
 
   useEffect(() => {
-    setDataTable(props);
-  }, [props]);
+    setDataTable(props.tables);
+  }, [props.tables]);
+
+  console.log(props)
+
+
 
   return (
-    <Pulse key={Date.now()}>
+    <Pulse animation={props.animation} key={props.total}>
       <TableContainer className={classes.container} component={Paper}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>APP</StyledTableCell>
-              <StyledTableCell align="right">Total</StyledTableCell>
-              <StyledTableCell align="right">Aguardando Envio</StyledTableCell>
-              <StyledTableCell align="right">
-                Aguardando Entrega
-              </StyledTableCell>
-              <StyledTableCell align="right">Entregues</StyledTableCell>
-              <StyledTableCell align="right">Bounce Sofridos</StyledTableCell>
-              <StyledTableCell align="right">Bounce Evitados</StyledTableCell>
+              {Columns.map((col, index) => (
+                <StyledTableCell key={index} align={col.align}>{col.title}</StyledTableCell>
+              ))}
             </TableRow>
           </TableHead>
           <TableBody>
-            {dataTable.dataValue.map(row => (
+            {dataTable.map(row => (
               <StyledTableRow key={row.ap_id}>
                 <StyledTableCell component="th" scope="row">
                   <b>{row.ap_name}</b>
@@ -85,4 +85,21 @@ export default function CustomizedTables(props) {
       </TableContainer>
     </Pulse>
   );
+}
+
+
+CustomizedTables.defaultProps = {
+  table: [
+    {
+      ap_id: 1,
+      ap_name: 'Karoo',
+      total: '32',
+      waitSend: '4',
+      waitDelivery: '4',
+      Delivered: '24',
+      bounce: '0',
+      Suprimido: '9'
+    }
+  ]
+
 }

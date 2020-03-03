@@ -8,7 +8,7 @@ const SectionGeralStyled = style.div`
 
 `;
 
-export default ({ cards, tabela }) => (
+export default ({ cards, tables }) => (
   <SectionGeralStyled>
     <section
       style={{
@@ -27,7 +27,7 @@ export default ({ cards, tabela }) => (
         marginLeft: '100px'
       }}
     >
-      {tabela}
+      {tables}
     </section>
   </SectionGeralStyled>
 );
