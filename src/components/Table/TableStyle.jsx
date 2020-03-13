@@ -9,19 +9,16 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Pulse from '../../useful/animations/Pulse';
 import Columns from './columns';
-import truncateString from '../../useful/truncateString';
-
-
 
 const StyledTableCell = withStyles(() => ({
   head: {
     backgroundColor: '#3b424c',
     color: 'white',
-    fontSize: 16
+    fontSize: 20
   },
   body: {
-    fontSize: 16,
-
+    fontSize: 18,
+    textAlign: 'center'
   }
 }))(TableCell);
 
@@ -71,7 +68,7 @@ export default function CustomizedTables(props) {
             {dataTable.map(row => (
               <StyledTableRow key={row.ap_id}>
                 <StyledTableCell component="th" scope="row">
-                  <b>{truncateString(row.ap_name, 10)}</b>
+                  <b>{row.ap_name}</b>
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.total}</StyledTableCell>
                 <StyledTableCell align="right">{row.waitSend}</StyledTableCell>

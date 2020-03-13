@@ -1,31 +1,31 @@
 const columns = [
   {
     title: 'App',
-    align: 'left'
+    align: 'center'
   },
   {
     title: 'Total',
-    align: 'rigth'
+    align: 'center'
   },
   {
     title: 'Aguardando Envio',
-    align: 'rigth'
+    align: 'center'
   },
   {
     title: 'Aguardando Entrega',
-    align: 'rigth'
+    align: 'center'
   },
   {
     title: 'Entregue',
-    align: 'rigth'
+    align: 'center'
   },
   {
     title: 'Bounce Sofridos',
-    align: 'rigth'
+    align: 'center'
   },
   {
     title: 'Bounce Evitados',
-    align: 'rigth'
+    align: 'center'
   }
 ];
 
